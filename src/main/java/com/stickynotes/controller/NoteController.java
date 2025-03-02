@@ -1,5 +1,6 @@
 package com.stickynotes.controller;
 
+import com.stickynotes.dto.NoteDto;
 import com.stickynotes.model.Note;
 import com.stickynotes.service.NoteService;
 import lombok.RequiredArgsConstructor;
@@ -36,12 +37,22 @@ public class NoteController {
     }
 
     @PostMapping
-    public ResponseEntity<Note> createNote(@RequestBody Note note) {
+    public ResponseEntity<Note> createNote(@RequestBody NoteDto noteDto) {
+        System.out.println(noteDto.toString());
+        Note note = new Note();
+        note.setContent(noteDto.getContent());
+        note.setColor(noteDto.getColor());
+        note.setCreateTime(noteDto.getCreateTime());
+        note.setIsDone(noteDto.getIsDone());
+        note.setCategoryId(noteDto.getCategoryId());
         return ResponseEntity.ok(noteService.createNote(note));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Note> updateNote(@PathVariable Long id, @RequestBody Note note) {
+        System.out.println("id: " + id);
+        System.out.println(note.toString());
+        note.setId(id);
         return ResponseEntity.ok(noteService.updateNote(id, note));
     }
 

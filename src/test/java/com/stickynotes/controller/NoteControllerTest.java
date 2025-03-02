@@ -48,7 +48,7 @@ public class NoteControllerTest {
         note.setColor("#ff7eb9");
         note.setCreateTime("2024年03月01日");
         note.setIsDone(false);
-        note.setCategory(category);
+        note.setCategoryId(category.getId());
     }
 
     @Test

@@ -49,7 +49,7 @@ public class NoteServiceImpl implements NoteService {
         Note existingNote = getNoteById(id);
         existingNote.setContent(note.getContent());
         existingNote.setColor(note.getColor());
-        existingNote.setCategory(note.getCategory());
+        existingNote.setCategoryId(note.getCategoryId());
         return noteRepository.save(existingNote);
     }
 

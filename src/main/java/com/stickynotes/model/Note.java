@@ -15,8 +15,6 @@ public class Note {
     private String color;
     private String createTime;
     private Boolean isDone;
-    
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+
+    private Long categoryId;
 } 
