@@ -14,23 +14,23 @@ public class NoteServiceImpl implements NoteService {
     private final NoteRepository noteRepository;
 
     @Override
-    public List<Note> getAllNotes() {
-        return noteRepository.findAll();
+    public List<Note> getAllNotes(Long userId) {
+        return noteRepository.findByUserId(userId);
     }
 
     @Override
-    public List<Note> getNotesByStatus(Boolean isDone) {
-        return noteRepository.findByIsDone(isDone);
+    public List<Note> getNotesByStatus(Long userId, Boolean isDone) {
+        return noteRepository.findByUserIdAndIsDone(userId, isDone);
     }
 
     @Override
-    public List<Note> getNotesByDate(String date) {
-        return noteRepository.findByCreateTime(date);
+    public List<Note> getNotesByDate(Long userId, String date) {
+        return noteRepository.findByUserIdAndCreateTime(userId, date);
     }
 
     @Override
-    public List<Note> getNotesByCategoryAndStatus(Long categoryId, Boolean isDone) {
-        return noteRepository.findByCategoryIdAndIsDone(categoryId, isDone);
+    public List<Note> getNotesByCategoryAndStatus(Long userId, Long categoryId, Boolean isDone) {
+        return noteRepository.findByUserIdAndCategoryIdAndIsDone(userId, categoryId, isDone);
     }
 
     @Override

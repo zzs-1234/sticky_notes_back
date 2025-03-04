@@ -15,6 +15,6 @@ public class Note {
     private String color;
     private String createTime;
     private Boolean isDone;
-
+    private Long userId;
     private Long categoryId;
 } 
